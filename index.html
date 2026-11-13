@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TinyWonders | Toys that grow with them - Premium Indian Toy Store</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="TinyWonders - Curated, safe, and BIS-certified developmental toys designed for joyful learning and imaginative growth in India. Shop by age and occasions.">
+  <meta property="og:title" content="TinyWonders | Toys that grow with them">
+  <meta property="og:description" content="Curated developmental and safe BIS-certified toys for Indian parents and thoughtful gift buyers.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Modular Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Dynamic Product JSON-LD Schema placeholder -->
+  <script type="application/ld+json" id="product-json-ld">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Store",
+      "name": "TinyWonders",
+      "description": "Safe, BIS-certified Indian toys that grow with children."
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div id="announcement-bar" role="region" aria-label="Store Announcement">
+    Free delivery above ₹999 | Cash on Delivery available across India
+  </div>
+
+  <!-- Sticky Header -->
+  <header id="header" class="sticky-header" role="banner">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <div class="logo" onclick="window.storeApp.navigate('home')" role="button" aria-label="TinyWonders Home">
+        <div class="logo-icon">W</div>
+        <div class="logo-text">Tiny<span>Wonders</span></div>
+      </div>
+
+      <!-- Live Search Bar -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="search-input" placeholder="Search developmental toys, puzzles, blocks..." autocomplete="off" aria-label="Search toys">
+        </div>
+        <div id="search-suggestions" role="listbox"></div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-links" role="navigation" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active" data-view="home" onclick="window.storeApp.navigate('home')">Home</a>
+        <a href="#shop" class="nav-link" data-view="shop" onclick="window.storeApp.navigate('shop')">Shop All</a>
+        <a href="#occasions" class="nav-link" onclick="window.storeApp.navigate('home'); setTimeout(() => document.getElementById('occasions-section').scrollIntoView({behavior:'smooth'}), 100);">Occasions</a>
+        <a href="#age" class="nav-link" onclick="window.storeApp.navigate('home'); setTimeout(() => document.getElementById('age-section').scrollIntoView({behavior:'smooth'}), 100);">By Age</a>
+        <a href="#about" class="nav-link" onclick="showToast('TinyWonders - Dedicated to BIS certified Indian child development toys.', 'info')">About Us</a>
+      </nav>
+
+      <!-- Wishlist & Cart Actions -->
+      <div class="header-actions">
+        <button class="icon-btn" onclick="showToast('Your saved toys are bookmarked with ❤️', 'info')" title="Wishlist" aria-label="View Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="badge" id="wishlist-badge">0</span>
+        </button>
+
+        <button class="icon-btn" onclick="window.storeApp.openCart()" title="Shopping Cart" aria-label="Open Shopping Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="badge" id="cart-badge">0</span>
+        </button>
+
+        <button class="mobile-menu-btn" onclick="window.storeApp.navigate('shop')" aria-label="Toggle Navigation Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       VIEW 1: HOME VIEW
+       ========================================================================= -->
+  <main id="home-view" class="view active" role="main">
+    
+    <!-- Hero Section -->
+    <section id="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Toys that <span>grow</span> with them.
+          </h1>
+          <p class="hero-subtitle">
+            Thoughtfully curated, BIS-certified developmental toys designed for joyful discovery, curiosity, and boundless Indian imagination.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary" onclick="window.storeApp.filterByOccasion('Diwali')">
+              ✨ Shop Festive Gifts
+            </button>
+            <button class="btn btn-secondary" onclick="window.storeApp.navigate('shop')">
+              Browse All Toys
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual" id="hero-shapes-container" aria-hidden="true">
+          <!-- Populated by svgs.js HERO_SHAPES_SVG -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <div class="container">
+      <section id="trust-strip" aria-label="Why Shop With TinyWonders">
+        <!-- Injected via app.js with SVG icons -->
+      </section>
+    </div>
+
+    <!-- Shop by Occasion Section -->
+    <section id="occasions-section" class="section">
+      <div class="container">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 8px;">
+          <h2 class="section-title" style="margin-bottom: 0;">Shop by Festive Occasion</h2>
+          <button class="btn btn-sm btn-secondary" onclick="window.storeApp.toggleOccasionSection()" id="occasion-toggle-btn">
+            Collapse &#9652;
+          </button>
+        </div>
+        <p class="section-subtitle" style="text-align: left; margin-bottom: 24px;">Celebrate childhood milestones and joyful Indian festivities with memorable keepsakes</p>
+        <div class="occasions-grid" id="occasions-container">
+          <!-- 5 Occasion Tiles Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop by Age Section -->
+    <section id="age-section" class="section">
+      <div class="container">
+        <h2 class="section-title">Shop by Age Milestones</h2>
+        <p class="section-subtitle">Age-appropriate tools for motor skills, creative exploration, and cognitive growth</p>
+        <div class="age-pills" id="age-pills-container">
+          <!-- Age Pills Injected via JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Carousel Section -->
+    <section id="featured-section" class="section">
+      <div class="container">
+        <h2 class="section-title">Trending & Bestselling Favorites</h2>
+        <p class="section-subtitle">Loved by over 25,000+ mindful parents across India</p>
+        <div class="carousel-container">
+          <button class="carousel-arrow prev" onclick="document.getElementById('featured-track').scrollBy({left: -320, behavior:'smooth'})" aria-label="Previous Products">&#10094;</button>
+          <div class="carousel-track" id="featured-track">
+            <!-- Featured Product Cards Injected via JS -->
+          </div>
+          <button class="carousel-arrow next" onclick="document.getElementById('featured-track').scrollBy({left: 320, behavior:'smooth'})" aria-label="Next Products">&#10095;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seasonal Diwali Banner -->
+    <div class="container">
+      <section id="seasonal-banner">
+        <div class="seasonal-content">
+          <span class="seasonal-badge">Festive Special</span>
+          <h2 class="seasonal-title">Celebrate with Timeless Wooden Toys</h2>
+          <p class="seasonal-desc">Enjoy up to 35% off on artisan-crafted Channapatna wooden puzzles, DIY terracotta Diya painting sets, and traditional Indian board games.</p>
+          <div class="seasonal-countdown">
+            <div class="countdown-box"><span class="countdown-num">04</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-box"><span class="countdown-num">18</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-box"><span class="countdown-num">45</span><span class="countdown-label">Mins</span></div>
+          </div>
+          <button class="btn btn-primary" onclick="window.storeApp.filterByOccasion('Diwali')">
+            Explore Diwali Offers &rarr;
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Customer Testimonials -->
+    <section id="testimonials-section" class="section">
+      <div class="container">
+        <h2 class="section-title">What Parents Say</h2>
+        <p class="section-subtitle">Real experiences from families nurturing growth through play</p>
+        <div class="testimonials-grid" id="testimonials-container">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <div class="container">
+      <section id="newsletter-section">
+        <div class="newsletter-box">
+          <h2 class="newsletter-title">Join the Wonder Circle</h2>
+          <p class="newsletter-desc">Get weekly mindful parenting tips, developmental toy guides, and exclusive festive deals.</p>
+          <form class="newsletter-form" onsubmit="window.storeApp.handleNewsletter(event)">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address..." required aria-label="Email for newsletter">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- =========================================================================
+       VIEW 2: SHOP ALL VIEW
+       ========================================================================= -->
+  <main id="shop-view" class="view" role="main">
+    <div class="container">
+      <div class="shop-layout">
+        
+        <!-- Left Filter Sidebar / Mobile Drawer -->
+        <aside class="shop-sidebar" id="shop-sidebar">
+          <div class="sidebar-header">
+            <h3>Filters</h3>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <span class="clear-filters-btn" onclick="window.storeApp.clearAllFilters()">Clear All</span>
+              <button class="mobile-filter-close-btn" onclick="window.storeApp.toggleMobileFilters(false)" aria-label="Close Filters">&times;</button>
+            </div>
+          </div>
+
+          <!-- Occasion Checkboxes -->
+          <div class="filter-group">
+            <div class="filter-title" onclick="window.storeApp.toggleOccasionFilterCollapse()" style="cursor: pointer; user-select: none;">
+              <span>Festive Occasion</span>
+              <span id="occasion-filter-chevron" style="font-size: 0.8rem; color: var(--gray-500);">&#9662;</span>
+            </div>
+            <div id="filter-occasions-box"></div>
+          </div>
+
+          <!-- Age Group Checkboxes -->
+          <div class="filter-group">
+            <div class="filter-title">Age Group</div>
+            <div id="filter-ages-box"></div>
+          </div>
+
+          <!-- Category Checkboxes -->
+          <div class="filter-group">
+            <div class="filter-title">Toy Category</div>
+            <div id="filter-categories-box"></div>
+          </div>
+
+          <!-- Price Range Slider -->
+          <div class="filter-group">
+            <div class="filter-title">Max Price</div>
+            <div class="price-slider-wrap">
+              <input type="range" id="price-range-input" min="199" max="3000" step="100" value="3000" oninput="window.storeApp.setPriceMax(this.value)">
+              <div class="price-values">
+                <span>₹199</span>
+                <span id="price-slider-display">₹3,000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- In Stock Only Switch -->
+          <div class="filter-group">
+            <div class="toggle-switch-wrap">
+              <span style="font-weight: 600; font-size: 0.9rem;">In stock only</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="in-stock-toggle" onchange="window.storeApp.toggleInStock(this.checked)">
+                <span class="slider-round"></span>
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main Product Results Area -->
+        <div class="shop-main">
+          <!-- Toolbar -->
+          <div class="shop-toolbar">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <button class="btn btn-sm btn-secondary mobile-filter-toggle-btn" onclick="window.storeApp.toggleMobileFilters(true)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                <span>Filters</span>
+              </button>
+              <div class="result-count" id="shop-result-count">Showing 20 toys</div>
+            </div>
+            <div class="toolbar-controls">
+              <select class="sort-select" onchange="window.storeApp.setSortBy(this.value)" aria-label="Sort products">
+                <option value="popular">Popularity</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Active Filter Chips -->
+          <div class="active-filters" id="active-filter-chips"></div>
+
+          <!-- Product Grid -->
+          <div class="shop-grid" id="shop-products-grid">
+            <!-- Dynamic Product Cards Injected via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       VIEW 3: PRODUCT DETAIL VIEW
+       ========================================================================= -->
+  <main id="product-view" class="view" role="main">
+    <div class="container">
+      
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#home" onclick="window.storeApp.navigate('home')">Home</a>
+        <span>&rsaquo;</span>
+        <a href="#shop" onclick="window.storeApp.navigate('shop')">Shop</a>
+        <span>&rsaquo;</span>
+        <span id="product-bc-category">Category</span>
+        <span>&rsaquo;</span>
+        <span id="product-bc-title" style="color: var(--navy); font-weight: 600;">Product</span>
+      </nav>
+
+      <!-- Main Product Detail Grid -->
+      <div class="product-detail-grid">
+        
+        <!-- Left: Image Gallery -->
+        <div class="gallery-wrap">
+          <div class="main-image-box" id="product-detail-main-img" onmousemove="this.querySelector('img,svg').style.transform='scale(1.25)'" onmouseleave="this.querySelector('img,svg').style.transform='scale(1)'">
+            <!-- Injected via JS -->
+          </div>
+          <div class="thumbnail-strip" id="product-thumbnail-strip">
+            <!-- 4 Thumbnails + 1 Video Overlay -->
+          </div>
+        </div>
+
+        <!-- Right: Information & Purchasing -->
+        <div class="product-detail-info">
+          <h1 class="product-detail-title" id="detail-title">Toy Name</h1>
+          
+          <div class="product-detail-rating">
+            <span class="stars" id="detail-stars">★★★★★</span>
+            <span class="review-count" id="detail-reviews-num">(48 customer reviews)</span>
+          </div>
+
+          <div class="product-detail-price">
+            <span class="detail-current-price" id="detail-price-val">₹799</span>
+            <span class="detail-original-price" id="detail-orig-price-val">₹999</span>
+            <span class="detail-discount-pill" id="detail-discount-tag">Save 20%</span>
+          </div>
+
+          <p class="product-detail-desc" id="detail-desc-text">
+            Product description details loaded dynamically.
+          </p>
+
+          <!-- Quantity Stepper & Buttons -->
+          <div class="purchase-controls">
+            <div class="quantity-stepper">
+              <button class="qty-btn" onclick="window.storeApp.changeDetailQty(-1)">-</button>
+              <input type="text" class="qty-input" id="detail-qty-input" value="1" readonly>
+              <button class="qty-btn" onclick="window.storeApp.changeDetailQty(1)">+</button>
+            </div>
+            <button class="btn btn-primary" onclick="window.storeApp.addToCartFromDetail()">
+              Add to Cart
+            </button>
+            <button class="btn btn-secondary" onclick="window.storeApp.buyNowFromDetail()">
+              Buy Now
+            </button>
+          </div>
+
+          <!-- PIN Code Checker -->
+          <div class="pincode-box">
+            <div style="font-size: 0.9rem; font-weight: 700; color: var(--navy);">Check Delivery & COD Availability</div>
+            <div class="pincode-form">
+              <input type="text" class="pincode-input" id="pincode-input" placeholder="Enter 6-digit PIN code (e.g. 560001)" maxlength="6">
+              <button class="btn btn-sm btn-secondary" onclick="window.storeApp.checkPincode()">Check</button>
+            </div>
+            <div class="pincode-msg" id="pincode-msg"></div>
+          </div>
+
+          <!-- Safety Certification Strip -->
+          <div class="safety-strip">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span>BIS Certified (IS 9873) &bull; Lead-Free Non-Toxic &bull; Safe for Kids</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Product Tabs Section -->
+      <section class="product-tabs-section">
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn active" onclick="window.storeApp.switchTab('desc', this)" role="tab">Description</button>
+          <button class="tab-btn" onclick="window.storeApp.switchTab('details', this)" role="tab">Specifications</button>
+          <button class="tab-btn" onclick="window.storeApp.switchTab('reviews', this)" role="tab">Reviews</button>
+        </div>
+
+        <div class="tab-content active" id="tab-content-desc">
+          <p style="font-size: 1rem; line-height: 1.8; color: var(--gray-700);">
+            Each toy at TinyWonders is crafted with pediatric developmental guidelines in mind. Our non-toxic water-based finishes ensure safety during sensory and exploratory stages, while durable Indian hard-timber and BPA-free elements ensure heirloom durability for years of playful learning.
+          </p>
+        </div>
+
+        <div class="tab-content" id="tab-content-details">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+            <tr style="border-bottom: 1px solid var(--gray-200);"><td style="padding: 10px 0; font-weight: 700;">Certification</td><td style="padding: 10px 0;">BIS Standard IS 9873 Compliant</td></tr>
+            <tr style="border-bottom: 1px solid var(--gray-200);"><td style="padding: 10px 0; font-weight: 700;">Material</td><td style="padding: 10px 0;">Organically treated Pine / Birch Plywood / Organic Cotton</td></tr>
+            <tr style="border-bottom: 1px solid var(--gray-200);"><td style="padding: 10px 0; font-weight: 700;">Country of Origin</td><td style="padding: 10px 0;">Handcrafted in India</td></tr>
+            <tr><td style="padding: 10px 0; font-weight: 700;">Care Instructions</td><td style="padding: 10px 0;">Wipe with clean damp cloth. Do not submerge wooden toys in water.</td></tr>
+          </table>
+        </div>
+
+        <div class="tab-content" id="tab-content-reviews">
+          <div class="reviews-tab-layout">
+            <div class="rating-overview">
+              <div class="rating-number">4.8</div>
+              <div style="color: #FFA41C; font-size: 1.25rem;">★★★★★</div>
+              <div style="font-size: 0.85rem; color: var(--gray-500); margin-top: 4px;">Based on verified customer orders</div>
+              <div class="rating-bars">
+                <div class="bar-row"><span>5★</span><div class="bar-track"><div class="bar-fill" style="width: 82%;"></div></div><span>82%</span></div>
+                <div class="bar-row"><span>4★</span><div class="bar-track"><div class="bar-fill" style="width: 14%;"></div></div><span>14%</span></div>
+                <div class="bar-row"><span>3★</span><div class="bar-track"><div class="bar-fill" style="width: 4%;"></div></div><span>4%</span></div>
+                <div class="bar-row"><span>2★</span><div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div><span>0%</span></div>
+                <div class="bar-row"><span>1★</span><div class="bar-track"><div class="bar-fill" style="width: 0%;"></div></div><span>0%</span></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="reviews-list" id="reviews-list-container">
+                <!-- 4 Real Sample Reviews Injected -->
+                <div class="review-item">
+                  <div class="review-header">
+                    <span class="reviewer-name">Kavita Radhakrishnan</span>
+                    <span class="review-date">10 days ago</span>
+                  </div>
+                  <div style="color: #FFA41C; margin-bottom: 6px;">★★★★★</div>
+                  <p style="font-size: 0.95rem; color: var(--gray-700);">Superb quality and smooth rounded edges! My 3-year-old hasn't stopped building towers since this arrived.</p>
+                </div>
+                <div class="review-item">
+                  <div class="review-header">
+                    <span class="reviewer-name">Rohan Malhotra</span>
+                    <span class="review-date">3 weeks ago</span>
+                  </div>
+                  <div style="color: #FFA41C; margin-bottom: 6px;">★★★★★</div>
+                  <p style="font-size: 0.95rem; color: var(--gray-700);">Great gift choice for Diwali. Arrived on time with lovely festive packaging.</p>
+                </div>
+              </div>
+
+              <!-- Instant Add Review Form -->
+              <div class="add-review-card">
+                <h4>Write a Review</h4>
+                <form id="add-review-form" onsubmit="window.storeApp.addReview(event)">
+                  <div class="form-group">
+                    <label for="review-author-name">Your Name</label>
+                    <input type="text" id="review-author-name" class="form-control" required placeholder="e.g. Sangeeta Iyer">
+                  </div>
+                  <div class="form-group">
+                    <label>Rating</label>
+                    <div class="star-rating-input">
+                      <span class="star active">&#9733;</span>
+                      <span class="star active">&#9733;</span>
+                      <span class="star active">&#9733;</span>
+                      <span class="star active">&#9733;</span>
+                      <span class="star active">&#9733;</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="review-text">Review</label>
+                    <textarea id="review-text" class="form-control" rows="3" required placeholder="What did your child love about this toy?"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-primary">Submit Review</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- You May Also Like Row -->
+      <section class="section">
+        <h2 class="section-title">You May Also Like</h2>
+        <div class="shop-grid" id="related-products-row" style="margin-top: 24px;">
+          <!-- 4 Related Products Injected via JS -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       VIEW 4: ADMIN / OWNER PREVIEW VIEW
+       ========================================================================= -->
+  <main id="admin-view" class="view" role="main">
+    <div class="container">
+      <div class="admin-header">
+        <div>
+          <h2>Store Owner Dashboard</h2>
+          <p style="color: var(--gray-500);">Real-time in-memory inventory management & live store controls</p>
+        </div>
+        <button class="btn btn-secondary" onclick="window.storeApp.navigate('shop')">
+          &larr; Back to Shop
+        </button>
+      </div>
+
+      <!-- 4 Stat Cards -->
+      <div class="admin-stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="stat-card">
+          <div class="stat-num" id="admin-stat-products">20</div>
+          <div class="stat-label">Total Active Products</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="admin-stat-categories">7</div>
+          <div class="stat-label">Product Categories</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="admin-stat-stock">280</div>
+          <div class="stat-label">Total Inventory Units</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" id="admin-stat-orders" style="color: var(--teal);">3</div>
+          <div class="stat-label">Current Orders</div>
+        </div>
+      </div>
+
+      <!-- Admin Tab Switcher -->
+      <div class="admin-tabs" style="display:flex; gap:12px; margin-bottom:24px;">
+        <button class="btn btn-primary" id="admin-tab-btn-orders" onclick="window.storeApp.switchAdminTab('orders')">
+          📦 Current Customer Orders (<span id="admin-orders-count-badge">3</span>)
+        </button>
+        <button class="btn btn-secondary" id="admin-tab-btn-inventory" onclick="window.storeApp.switchAdminTab('inventory')">
+          🏷️ Manage Inventory & Products
+        </button>
+        <button class="btn btn-secondary" id="admin-tab-btn-add" onclick="window.storeApp.switchAdminTab('add')">
+          ➕ Add Product & Categories
+        </button>
+      </div>
+
+      <!-- Admin Pane 1: Orders Management -->
+      <div id="admin-pane-orders" class="admin-content-box" style="margin-bottom: 32px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+          <div>
+            <h3>Current Customer Orders</h3>
+            <p style="font-size:0.875rem; color:var(--gray-500);">Live customer orders placed via the store. Update dispatch and shipping statuses in real-time.</p>
+          </div>
+          <button class="btn btn-sm btn-secondary" onclick="window.storeApp.renderAdminOrders()">Refresh Orders</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-table-body">
+              <!-- Rendered via app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin Pane 2: Inventory Management Table -->
+      <div id="admin-pane-inventory" class="admin-content-box" style="margin-bottom: 32px; display: none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 16px;">
+          <div>
+            <h3>Live Product Inventory</h3>
+            <p style="font-size:0.875rem; color:var(--gray-500);">Edit stock levels and pricing directly, or delete discontinued toys.</p>
+          </div>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price (₹)</th>
+                <th>Stock Units</th>
+                <th>Quick Edit Stock</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-products-table-body">
+              <!-- Injected via app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Admin Pane 3: Add Product & Categories -->
+      <div id="admin-pane-add" style="display: none;">
+        <div class="admin-content-box" style="margin-bottom: 32px;">
+          <h3 style="margin-bottom: 20px;">Add New Product (Instantly Updates Store)</h3>
+          <form id="admin-add-product-form" onsubmit="window.storeApp.handleAddProduct(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="admin-p-name">Product Name</label>
+                <input type="text" id="admin-p-name" class="form-control" required placeholder="e.g. Wooden Pull-Along Elephant">
+              </div>
+              <div class="form-group">
+                <label for="admin-p-price">Price (₹)</label>
+                <input type="number" id="admin-p-price" class="form-control" required min="99" max="9999" placeholder="e.g. 699">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="admin-add-category-select">Category</label>
+                <select id="admin-add-category-select" class="form-control" required></select>
+              </div>
+              <div class="form-group">
+                <label for="admin-p-age">Age Group</label>
+                <select id="admin-p-age" class="form-control">
+                  <option value="0-2">0-2 Years</option>
+                  <option value="3-5">3-5 Years</option>
+                  <option value="6-8">6-8 Years</option>
+                  <option value="9+">9+ Years</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="admin-p-stock">Stock Units</label>
+                <input type="number" id="admin-p-stock" class="form-control" required value="15" min="0">
+              </div>
+              <div class="form-group">
+                <label for="admin-add-occasions-select">Festive Occasions (Hold Ctrl/Cmd to select multiple)</label>
+                <select id="admin-add-occasions-select" class="form-control" multiple style="height: 80px;"></select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="admin-p-desc">Short Description</label>
+              <textarea id="admin-p-desc" class="form-control" rows="2" placeholder="Brief developmental details"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product to Catalog</button>
+          </form>
+        </div>
+
+        <!-- Quick Add Category / Occasion Dynamic Controls -->
+        <div class="form-row" style="margin-bottom: 32px;">
+          <div class="admin-content-box">
+            <h4>Add New Store Category</h4>
+            <div style="display:flex; gap:10px; margin-top:10px;">
+              <input type="text" id="admin-new-cat-input" class="form-control" placeholder="New Category Name">
+              <button class="btn btn-sm btn-secondary" onclick="window.storeApp.adminAddCategory()">Add</button>
+            </div>
+          </div>
+          <div class="admin-content-box">
+            <h4>Add New Festive Occasion</h4>
+            <div style="display:flex; gap:10px; margin-top:10px;">
+              <input type="text" id="admin-new-occ-input" class="form-control" placeholder="New Occasion Name">
+              <button class="btn btn-sm btn-secondary" onclick="window.storeApp.adminAddOccasion()">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       CART DRAWER
+       ========================================================================= -->
+  <aside id="cart-drawer" role="dialog" aria-label="Shopping Cart">
+    <div class="drawer-overlay" onclick="window.storeApp.closeCart()"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Your Toy Basket</h3>
+        <button class="close-drawer-btn" onclick="window.storeApp.closeCart()" aria-label="Close Cart">&times;</button>
+      </div>
+
+      <!-- Free Delivery Progress Bar -->
+      <div class="free-delivery-banner">
+        <div class="delivery-progress-text" id="delivery-progress-msg">
+          Add <strong>₹240</strong> more for <strong>FREE Delivery</strong>
+        </div>
+        <div class="delivery-progress-track">
+          <div class="delivery-progress-fill" id="delivery-progress-fill" style="width: 75%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="cart-items-container" id="cart-items-list">
+        <!-- Injected via app.js -->
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="drawer-footer">
+        <div class="cart-subtotal-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal-val">₹0</span>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="window.storeApp.openCheckout()">
+          Proceed to Checkout &rarr;
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       CHECKOUT MODAL (3-STEP)
+       ========================================================================= -->
+  <div class="modal-backdrop" id="checkout-modal" role="dialog" aria-label="Express Checkout">
+    <div class="checkout-modal-content">
+      <button class="modal-close-btn" onclick="window.storeApp.closeCheckout()" aria-label="Close Checkout Modal">&times;</button>
+
+      <!-- Stepper Header -->
+      <div class="checkout-stepper">
+        <div class="checkout-step active" id="step-indicator-1">
+          <span class="step-num">1</span>
+          <span>Address</span>
+        </div>
+        <div class="checkout-step" id="step-indicator-2">
+          <span class="step-num">2</span>
+          <span>Payment</span>
+        </div>
+        <div class="checkout-step" id="step-indicator-3">
+          <span class="step-num">3</span>
+          <span>Confirm</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Address -->
+      <div class="checkout-step-pane active" id="checkout-pane-1">
+        <h3 style="margin-bottom: 16px;">Shipping Address</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" class="form-control" value="Nirmal Kumar" placeholder="Parent or Recipient Name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" class="form-control" value="+91 98765 43210" placeholder="10-digit mobile number">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>House / Flat / Street Address</label>
+          <input type="text" class="form-control" value="Flat 402, Green Meadows Apartment, Indiranagar" placeholder="Full address">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" class="form-control" value="Bengaluru">
+          </div>
+          <div class="form-group">
+            <label>PIN Code</label>
+            <input type="text" class="form-control" value="560038" maxlength="6">
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" style="margin-top: 12px;" onclick="window.storeApp.setCheckoutStep(2)">
+          Continue to Payment &rarr;
+        </button>
+      </div>
+
+      <!-- Step 2: Payment Method -->
+      <div class="checkout-step-pane" id="checkout-pane-2">
+        <h3 style="margin-bottom: 16px;">Select Payment Mode</h3>
+        <div class="payment-methods-grid">
+          <label class="payment-card-option selected">
+            <input type="radio" name="paymethod" checked>
+            <div>
+              <strong>UPI (GPay / PhonePe / Paytm / BHIM)</strong>
+              <div style="font-size: 0.8rem; color: var(--gray-500);">Instant zero-fee transaction</div>
+            </div>
+          </label>
+          <label class="payment-card-option">
+            <input type="radio" name="paymethod">
+            <div>
+              <strong>Credit / Debit Card</strong>
+              <div style="font-size: 0.8rem; color: var(--gray-500);">Visa, MasterCard, RuPay, Amex</div>
+            </div>
+          </label>
+          <label class="payment-card-option">
+            <input type="radio" name="paymethod">
+            <div>
+              <strong>Cash on Delivery (COD)</strong>
+              <div style="font-size: 0.8rem; color: var(--gray-500);">Pay comfortably at your doorstep</div>
+            </div>
+          </label>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-secondary" onclick="window.storeApp.setCheckoutStep(1)">&larr; Back</button>
+          <button class="btn btn-primary" style="flex:1;" onclick="window.storeApp.setCheckoutStep(3)">Review Order &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Order Review -->
+      <div class="checkout-step-pane" id="checkout-pane-3">
+        <h3 style="margin-bottom: 16px;">Order Summary</h3>
+        <div id="checkout-review-summary"></div>
+        <div style="background: #E8F5E9; padding: 14px; border-radius: var(--radius-sm); margin-bottom: 20px; font-size: 0.85rem; color: #2E7D32;">
+          <strong>Demo Sandbox Notice:</strong> This is an interactive front-end prototype. No actual payment charge will be made.
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-secondary" onclick="window.storeApp.setCheckoutStep(2)">&larr; Back</button>
+          <button class="btn btn-teal" style="flex:1;" onclick="window.storeApp.completeOrder()">Place Order Now 🎉</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Hub -->
+  <div id="toast-container" role="status" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer id="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <div class="logo" style="margin-bottom: 16px;">
+          <div class="logo-icon">W</div>
+          <div class="logo-text" style="color: var(--white);">Tiny<span style="color: var(--yellow);">Wonders</span></div>
+        </div>
+        <p>Premium, safe, and BIS-certified developmental toys crafted to inspire lifelong curiosity for Indian children.</p>
+        <div class="social-links" id="footer-social-links">
+          <!-- Populated by app.js from window.SOCIAL_SVGS -->
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop & Discover</h4>
+        <ul class="footer-links">
+          <li><a href="#shop" onclick="window.storeApp.navigate('shop')">All Developmental Toys</a></li>
+          <li><a href="#shop" onclick="window.storeApp.filterByOccasion('Diwali')">Festive Diwali Collection</a></li>
+          <li><a href="#shop" onclick="window.storeApp.filterByAge('0-2')">Toddler Sensory (0-2 Yrs)</a></li>
+          <li><a href="#shop" onclick="window.storeApp.filterByAge('6-8')">STEM & Robotics (6-8 Yrs)</a></li>
+          <li><a href="#shop" onclick="window.storeApp.filterByOccasion('Birthday')">Birthday Return Gifts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Help & Policies</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="showToast('Free shipping on all orders over ₹999 across India.', 'info')">Shipping Policy</a></li>
+          <li><a href="#" onclick="showToast('Hassle-free 7-day doorstep return and exchange.', 'info')">7-Day Returns</a></li>
+          <li><a href="#" onclick="showToast('All toys comply with BIS standard IS 9873.', 'info')">BIS Safety Standards</a></li>
+          <li><a href="#" onclick="showToast('Track your consignment with live updates.', 'info')">Track Order</a></li>
+          <li><a href="#" onclick="showToast('Terms of Service demo modal.', 'info')">Terms & Privacy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact & Connect</h4>
+        <p>WhatsApp: +91 98765 43210<br>Email: care@tinywonders.in<br>Bengaluru, Karnataka, India</p>
+        <div class="payment-badges">
+          <span class="pay-badge">UPI</span>
+          <span class="pay-badge">RuPay</span>
+          <span class="pay-badge">Visa</span>
+          <span class="pay-badge">Mastercard</span>
+          <span class="pay-badge">Cash on Delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>&copy; 2026 TinyWonders Toys Pvt. Ltd. All rights reserved.</div>
+      <div>
+        <span class="owner-preview-link" onclick="window.storeApp.openAdmin()">Owner Preview / Dashboard</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts in dependency order -->
+  <script src="data.js"></script>
+  <script src="svgs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
